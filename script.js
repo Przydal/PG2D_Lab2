@@ -31,6 +31,7 @@ function draw() {
     drawPlayer();
     drawTargets();
     drawBullet();
+    drawScore();
 }
 
 function setDirection(event, down) {
@@ -101,7 +102,7 @@ function shoot() {
     if (shootTarget && !bullet) {
         bullet = {
             x: player.x + player.paddleLength / 2,
-            y: player.y - 50,
+            y: player.y,
             radius: 10
         };
     }
@@ -139,4 +140,10 @@ function checkTargets() {
     if (score % targets.length === 0) {
         targets.forEach(target => target.visible = true);
     }
+}
+
+function drawScore() {
+    ctx.font = "24px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Wynik: " + score, canvas.width - 150, canvas.height - 25);
 }
