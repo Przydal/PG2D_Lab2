@@ -4,11 +4,13 @@ var moveLeft = false,
     moveRight = false,
     shootTarget = false,
     bullet = null,
-    score = 0;
+    score = 0,
+    invisibleTargets = 0;
 
 const speed = 3,
     bulletSpeed = 25,
-    leftKey = 'ArrowLeft',
+    timeBeforeReborn = 20000;
+leftKey = 'ArrowLeft',
     rightKey = 'ArrowRight',
     shootKey = ' ',
     targets = [],
@@ -132,15 +134,18 @@ function checkCollision() {
         targets[targets.indexOf(aim)].visible = false;
         setTimeout(() => {
             targets[targets.indexOf(aim)].visible = true;
-        }, 10000);
+            invisibleTargets--;
+        }, timeBeforeReborn);
         bullet = null;
         score++;
+        invisibleTargets++;
     }
 }
 
 function checkTargets() {
-    if (score % targets.length === 0) {
+    if (targets.length === invisibleTargets) {
         targets.forEach(target => target.visible = true);
+        invisibleTargets = 0;
     }
 }
 
