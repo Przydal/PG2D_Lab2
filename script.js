@@ -7,7 +7,7 @@ var moveLeft = false,
     score = 0;
 
 const speed = 3,
-    bulletSpeed = 15,
+    bulletSpeed = 25,
     leftKey = 'ArrowLeft',
     rightKey = 'ArrowRight',
     shootKey = ' ',
@@ -130,6 +130,9 @@ function checkCollision() {
     }
     if (aim) {
         targets[targets.indexOf(aim)].visible = false;
+        setTimeout(() => {
+            targets[targets.indexOf(aim)].visible = true;
+        }, 10000);
         bullet = null;
         score++;
         console.log(score);
@@ -137,9 +140,9 @@ function checkCollision() {
 }
 
 function checkTargets() {
-    if (score % targets.length === 0) {
-        targets.forEach(target => target.visible = true);
-    }
+    // if (score % targets.length === 0) {
+    //     targets.forEach(target => target.visible = true);
+    // }
 }
 
 function drawScore() {
