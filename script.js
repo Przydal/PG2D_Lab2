@@ -140,9 +140,9 @@ function checkCollision() {
 }
 
 function checkTargets() {
-    // if (score % targets.length === 0) {
-    //     targets.forEach(target => target.visible = true);
-    // }
+    if (score % targets.length === 0) {
+        targets.forEach(target => target.visible = true);
+    }
 }
 
 function drawScore() {
