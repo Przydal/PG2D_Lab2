@@ -135,7 +135,6 @@ function checkCollision() {
         }, 10000);
         bullet = null;
         score++;
-        console.log(score);
     }
 }
 
